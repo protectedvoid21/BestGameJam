@@ -20,3 +20,4 @@ public class Player : MonoBehaviour
         _characterController.Move(direction * (_speed * Time.deltaTime));
     }
 }
+ 

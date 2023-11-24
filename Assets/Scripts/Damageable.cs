@@ -10,3 +10,4 @@ public class Damageable : MonoBehaviour
 
     public bool IsEnemy { get; private set; }
 }
+ 
