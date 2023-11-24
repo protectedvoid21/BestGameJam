@@ -15,4 +15,4 @@ public class BasicTower : ShootingTower
 		bullet.transform.rotation = Quaternion.LookRotation(dir);
 		bullet.GetComponent<Rigidbody>().velocity = dir.normalized * bulletSpeed;
     }
-}
+} 

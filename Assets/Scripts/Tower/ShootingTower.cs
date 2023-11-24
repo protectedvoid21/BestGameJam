@@ -18,7 +18,7 @@ public abstract class ShootingTower : Tower
 			_currentFireCooldown = FireCooldown;
 		}
 	}
-
+ 
 	Enemy GetClosestEnemy() {
 		Collider[] allObjects = Physics.OverlapSphere(transform.position, Range);
 		List<Enemy> enemies = new List<Enemy>();
