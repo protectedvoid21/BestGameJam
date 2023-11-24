@@ -6,10 +6,11 @@ public abstract class ShootingTower : Tower
 	public float Damage;
 	public float FireCooldown;
 
-	
 
 	void Update() {
-		_currentFireCooldown = Mathf.Min(0, _currentFireCooldown - Time.deltaTime);
+		_currentFireCooldown = _currentFireCooldown - Time.deltaTime;
+		if(_currentFireCooldown > 0)
+			return;
 
 		Enemy closestEnemy = GetClosestEnemy();
 		if(closestEnemy != null) {
