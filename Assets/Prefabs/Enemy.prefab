@@ -100,9 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4ea26bcf1dfa94cb25e4dd88cd2860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 2
+  movementSpeed: 3
+  attackCooldown: 1
   distanceToEnemyToAttack: 1
-  <DefaultAttackCooldown>k__BackingField: 2
+  <DefaultAttackCooldown>k__BackingField: 0.5
   <Damage>k__BackingField: 5
 --- !u!114 &6595650927107093740
 MonoBehaviour:

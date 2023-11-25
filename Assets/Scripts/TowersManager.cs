@@ -21,6 +21,8 @@ public sealed class TowersManager : MonoBehaviour
 
         foreach (Tower tower in towers)
         {
+            if(tower == null) // Destroyed, but hasnt been removed yet
+                continue;
             float distance = Vector2.Distance(tower.transform.position, position);
             if (!tower.damageable.IsDead && distance < closestDistance)
             {
