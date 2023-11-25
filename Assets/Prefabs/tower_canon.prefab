@@ -145,7 +145,7 @@ MonoBehaviour:
   MaxLevel: 0
   Damage: 20
   FireCooldown: 2
-  bulletSpeed: 10
+  bulletSpeed: 40
   explosionRadius: 10
   bulletPrefab: {fileID: 4897709747948895697, guid: c977b0aaac6f2f24894a51ef6a18d596,
     type: 3}

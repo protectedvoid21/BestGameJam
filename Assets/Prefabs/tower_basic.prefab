@@ -266,7 +266,7 @@ MonoBehaviour:
   MaxLevel: 5
   Damage: 20
   FireCooldown: 1
-  bulletSpeed: 5
+  bulletSpeed: 30
   bulletPrefab: {fileID: 8211526160054889507, guid: 9712b9a63e61ba342b8218d59b01f0ad,
     type: 3}
   shootingPoint: {fileID: 8204193691251807931}
