@@ -18,7 +18,7 @@ public class TowerBuyButton : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _costText;
 
-    private bool CanPlace => _playerMoney.CanSpendMoney(_towerCost);
+    private bool CanPlayerAfford => _playerMoney.CanSpendMoney(_towerCost);
     
     private PlayerMoney _playerMoney;
     private ObjectToCursorFollower _objectToCursorFollower;
@@ -47,7 +47,7 @@ public class TowerBuyButton : MonoBehaviour
 
     private void Update()
     {
-        if (!CanPlace)
+        if (!CanPlayerAfford)
         {
             _button.interactable = false;
             return;
@@ -72,10 +72,14 @@ public class TowerBuyButton : MonoBehaviour
     private void Buy()
     {
         TurnOffPlacingTower();
-        if (!_playerMoney.TrySpendMoney(_towerCost))
+        if (!CanPlayerAfford)
         {
             return;
         }
-        _towerPlaceObjectInstance.Place();
+        var isPlaceSucceed = _towerPlaceObjectInstance.Place();
+        if (isPlaceSucceed)
+        {
+            _playerMoney.TrySpendMoney(_towerCost);
+        }
     }
 }

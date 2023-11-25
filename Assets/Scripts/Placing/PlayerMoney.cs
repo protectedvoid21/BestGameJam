@@ -35,13 +35,13 @@ public class PlayerMoney : MonoBehaviour
     
     public bool TrySpendMoney(int amount)
     {
-        if (CanSpendMoney(amount))
+        if (!CanSpendMoney(amount))
         {
-            _money -= amount;
-            AdjustUIMoney();
-            return true;
+            return false;
         }
 
-        return false;
+        _money -= amount;
+        AdjustUIMoney();
+        return true;
     }
 }
