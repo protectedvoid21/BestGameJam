@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class TowerBuyPanel : MonoBehaviour
+[RequireComponent(typeof(Button))]
+public class TowerBuyButton : MonoBehaviour
 {
     private bool _currentlyPlacing;
+
+    private Button _button;
     
     [SerializeField]
     private PlaceObject _towerPlaceObject;
@@ -10,12 +14,15 @@ public class TowerBuyPanel : MonoBehaviour
 
     [SerializeField]
     private int _towerCost;
+
+    private bool _canPlace => _playerMoney.CanSpendMoney(_towerCost);
     
     private PlayerMoney _playerMoney;
     private ObjectToCursorFollower _objectToCursorFollower;
     
     private void Start()
     {
+        _button = GetComponent<Button>();
         _playerMoney = FindFirstObjectByType<PlayerMoney>();
         _objectToCursorFollower = FindFirstObjectByType<ObjectToCursorFollower>();
     }
@@ -36,6 +43,13 @@ public class TowerBuyPanel : MonoBehaviour
 
     private void Update()
     {
+        if (!_canPlace)
+        {
+            _button.interactable = false;
+            return;
+        }
+        _button.interactable = true;
+        
         if (!_currentlyPlacing)
         {
             return;
@@ -53,10 +67,11 @@ public class TowerBuyPanel : MonoBehaviour
     
     private void Buy()
     {
-        _playerMoney.TrySpendMoney(_towerCost);
-        _towerPlaceObjectInstance.Place();
-        Destroy(_towerPlaceObjectInstance.gameObject);
-        
         TurnOffPlacingTower();
+        if (!_playerMoney.TrySpendMoney(_towerCost))
+        {
+            return;
+        }
+        _towerPlaceObjectInstance.Place();
     }
 }
