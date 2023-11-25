@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4559185d3da641cfb4e6d148151a2cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _towerPlaceObject: {fileID: 3329800266806167718, guid: 81d4454bddedd7046858e711046081c3,
+  _towerPlaceObject: {fileID: 6416637132249141981, guid: 043038a77af04db49b88be129be3d530,
     type: 3}
   _towerCost: 15
 --- !u!114 &2058983497142754588
