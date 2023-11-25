@@ -11,11 +11,17 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     float _movementSpeed;
 
+    [HideInInspector]
+    float _currentSpeed;
+    [HideInInspector]
+    float _remainingSlowdownTime;
+
     public float distanceToEnemyToAttack;
 
     private void Awake()
     {
         Damageable = GetComponent<Damageable>();
+        _currentSpeed = _movementSpeed;
     }
 
     private void Start()
@@ -38,6 +44,10 @@ public abstract class Enemy : MonoBehaviour
     void Update()
     {
         UpdateBrain();
+        _remainingSlowdownTime -= Time.deltaTime;
+        // Debug.Log(_remainingSlowdownTime + " " + _currentSpeed);
+        if(_remainingSlowdownTime <= 0)
+            _currentSpeed = _movementSpeed;
     }
 
     void UpdateBrain()
@@ -49,10 +59,16 @@ public abstract class Enemy : MonoBehaviour
     {
         Vector3 newDirection = (targetPosition - transform.position).normalized;
         newDirection.SetY(0);
-        transform.position += newDirection * _movementSpeed * Time.deltaTime;
+        transform.position += newDirection * _currentSpeed * Time.deltaTime;
     }
 
     public abstract void StartAttacking(Damageable currentTarget);
+
+    public void ReduceSpeed(float percentage, float time) {
+        _currentSpeed = Mathf.Min(_movementSpeed * percentage, _currentSpeed);
+        Debug.Log(_movementSpeed * percentage);
+        _remainingSlowdownTime = Mathf.Max(_remainingSlowdownTime, time);
+    }
 
     public void GetDestroyed()
     {

@@ -1,25 +1,19 @@
 using UnityEngine;
 
-public class BasicTower : ShootingTower
-{
+public class ExplosiveTower : ShootingTower {
 	public float bulletSpeed;
+	public float explosionRadius;
 
-	public BasicBullet bulletPrefab;
+	public ExplosiveBullet bulletPrefab;
 	public Transform shootingPoint;
 
-    private void Start()
+    protected override void ShootAt(Enemy enemy)
     {
-		GetComponent<BasicTower>().Range = Range;
-	}
-
-	protected override void ShootAt(Enemy enemy)
-	{
-		BasicBullet bullet = Instantiate(bulletPrefab);
+		ExplosiveBullet bullet = Instantiate(bulletPrefab);
 		bullet.damage = Damage;
-
 		bullet.transform.position = shootingPoint.position;
 		Vector3 dir = shootingPoint.forward;
 		bullet.transform.rotation = shootingPoint.rotation;
 		bullet.GetComponent<Rigidbody>().velocity = dir.normalized * bulletSpeed;
-	}
-} 
+    }
+}
