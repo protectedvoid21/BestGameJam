@@ -21,7 +21,6 @@ public class BasicBullet : MonoBehaviour {
 
 	public void OnTriggerEnter(Collider collider)
 	{
-		Debug.Log("Trigger entered");
 		Enemy enemy = collider.GetComponent<Enemy>();
 		if (enemy != null)
 		{

@@ -10,8 +10,8 @@ public class MeleeEnemy : Enemy
     [field: SerializeField]
     public float Damage { get; private set; }
 
-    public override void StartAttacking(Damageable currentTarget)
+    public override void Attack(Damageable currentTarget)
     {
-        SetNewBehavior(new MeleeAttackEnemyBehavior(this, currentTarget));
+        currentTarget.GetDamaged(Damage);
     }
 }

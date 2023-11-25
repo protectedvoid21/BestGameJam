@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
@@ -14,6 +15,7 @@ public abstract class Tower : MonoBehaviour
     public virtual void Awake() {
         damageable = GetComponent<Damageable>();
         damageable.OnDeath += GetDestroyed;
+        FindAnyObjectByType<TowersManager>().towers.Add(this);
     }
 
     public void GetDestroyed()
@@ -21,5 +23,8 @@ public abstract class Tower : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public virtual void OnDestroy() {
+        FindAnyObjectByType<TowersManager>()?.towers.Remove(this);
+    }
 }
  
