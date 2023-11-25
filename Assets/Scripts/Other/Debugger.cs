@@ -19,7 +19,7 @@ public class Debugger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             GameObject e = Instantiate(enemyPrefab, transform);
-            e.transform.position = GameInput.GetWorldPointerPosition();
+            e.transform.position = GameInput.GetWorldPointerPositionOnlyGround();
         }
     }
 }

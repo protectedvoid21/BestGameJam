@@ -27,13 +27,7 @@ public class ObjectToCursorFollower : MonoBehaviour
         {
             _objectOnCursor.Rotate(0, 45, 0);
         }
-        
-        Ray ray = _mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            _objectOnCursor.position = hit.point;
-        }
+        _objectOnCursor.position = GameInput.GetWorldPointerPositionOnlyGround();
     }
 }
