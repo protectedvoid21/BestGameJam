@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private CharacterController _characterController;
 
+    public Transform flashlight;
+
     private void Update()
     {
         var horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -18,5 +20,7 @@ public class Player : MonoBehaviour
         var direction = new Vector3(horizontalInput, 0, verticalInput).normalized;
 
         _characterController.Move(direction * _speed * Time.deltaTime);
+
+        flashlight.transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg, 0f);
     }
 }

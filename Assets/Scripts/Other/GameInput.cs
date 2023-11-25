@@ -16,4 +16,17 @@ public static class GameInput
 
         return Vector3.negativeInfinity;
     }
+
+    public static Vector3 GetWorldPointerPositionOnlyGround()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Ground")))
+        {
+            return hit.point;
+        }
+
+        return Vector3.negativeInfinity;
+    }
 }
