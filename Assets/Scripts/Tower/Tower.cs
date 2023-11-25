@@ -24,7 +24,7 @@ public abstract class Tower : MonoBehaviour
     }
 
     public virtual void OnDestroy() {
-        FindAnyObjectByType<TowersManager>().towers.Remove(this);
+        FindAnyObjectByType<TowersManager>()?.towers.Remove(this);
     }
 }
  
