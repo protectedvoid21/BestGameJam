@@ -12,25 +12,25 @@ public class TowerBuyPanel : MonoBehaviour
     private int _towerCost;
     
     private PlayerMoney _playerMoney;
-    private MoveToAim _moveToAim;
+    private ObjectToCursorFollower _objectToCursorFollower;
     
     private void Start()
     {
         _playerMoney = FindFirstObjectByType<PlayerMoney>();
-        _moveToAim = FindFirstObjectByType<MoveToAim>();
+        _objectToCursorFollower = FindFirstObjectByType<ObjectToCursorFollower>();
     }
 
     public void TurnOnPlacingTower()
     {
         _currentlyPlacing = true;
         _towerPlaceObjectInstance = Instantiate(_towerPlaceObject);
-        _moveToAim.SetObjectOnCursor(_towerPlaceObjectInstance.transform);
+        _objectToCursorFollower.SetObjectOnCursor(_towerPlaceObjectInstance.transform);
     }
     
     private void TurnOffPlacingTower()
     {
         _currentlyPlacing = false;
-        _moveToAim.SetObjectOnCursor(null);
+        _objectToCursorFollower.SetObjectOnCursor(null);
         Destroy(_towerPlaceObjectInstance.gameObject);
     }
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class MoveToAim : MonoBehaviour
+public class ObjectToCursorFollower : MonoBehaviour
 {
     private Camera _mainCamera;
     private Transform _objectOnCursor;
