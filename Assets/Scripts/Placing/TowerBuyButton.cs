@@ -15,7 +15,7 @@ public class TowerBuyButton : MonoBehaviour
     [SerializeField]
     private int _towerCost;
 
-    private bool _canPlace => _playerMoney.CanSpendMoney(_towerCost);
+    private bool CanPlace => _playerMoney.CanSpendMoney(_towerCost);
     
     private PlayerMoney _playerMoney;
     private ObjectToCursorFollower _objectToCursorFollower;
@@ -43,7 +43,7 @@ public class TowerBuyButton : MonoBehaviour
 
     private void Update()
     {
-        if (!_canPlace)
+        if (!CanPlace)
         {
             _button.interactable = false;
             return;
