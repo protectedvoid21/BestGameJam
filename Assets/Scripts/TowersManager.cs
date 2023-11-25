@@ -29,7 +29,6 @@ public sealed class TowersManager : MonoBehaviour
             }
         }
 
-        Debug.Log(closestTower);
 
         return closestTower;
     }

@@ -3,6 +3,7 @@ using UnityEngine;
 class TowerRotate : MonoBehaviour
 {
     public Transform head;
+    public Vector3 angleOffset;
 
     private EnemySelector _selector;
 
@@ -26,7 +27,7 @@ class TowerRotate : MonoBehaviour
 
         Vector3 dir = new Vector3(direction.x, 0, direction.z);
 
-        Quaternion rotation = Quaternion.LookRotation(dir) * Quaternion.Euler(-90, -90, 0);
+        Quaternion rotation = Quaternion.LookRotation(dir) * Quaternion.Euler(angleOffset);
         head.rotation = rotation;
     }
 }

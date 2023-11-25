@@ -1,11 +1,13 @@
 using UnityEngine;
 
 public class BasicBullet : MonoBehaviour {
+	public float maxDuration;
+
 	[HideInInspector]
 	public float speed;
 	[HideInInspector]
 	public Vector3 direction;
-	public float maxDuration;
+	[HideInInspector]
 	public float damage;
 
 	void Update()
@@ -17,7 +19,7 @@ public class BasicBullet : MonoBehaviour {
 		}
 	}
 
-	private void OnTriggerEnter(Collider collider)
+	public void OnTriggerEnter(Collider collider)
 	{
 		Debug.Log("Trigger entered");
 		Enemy enemy = collider.GetComponent<Enemy>();
