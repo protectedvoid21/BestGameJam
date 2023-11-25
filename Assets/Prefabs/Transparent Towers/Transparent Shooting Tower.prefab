@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72a96a6351bcc9443a9f3b6e80f7ab43, type: 2}
+  - {fileID: 2100000, guid: 226dbe233e3af054888674988e0766c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,7 +148,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72a96a6351bcc9443a9f3b6e80f7ab43, type: 2}
+  - {fileID: 2100000, guid: 226dbe233e3af054888674988e0766c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -233,7 +233,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72a96a6351bcc9443a9f3b6e80f7ab43, type: 2}
+  - {fileID: 2100000, guid: 226dbe233e3af054888674988e0766c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6025699126727951211}
-  - component: {fileID: 4252205686060852516}
+  - component: {fileID: 3329800266806167718}
   m_Layer: 0
   m_Name: Transparent Shooting Tower
   m_TagString: Untagged
@@ -281,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 7997878801403712835}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.217741, y: -0.58, z: 23.879906}
+  m_LocalPosition: {x: -5.1392, y: -0.77, z: 1.7759528}
   m_LocalScale: {x: 0.50503, y: 0.50503, z: 0.50503}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -291,7 +291,7 @@ Transform:
   - {fileID: 4894528747580821651}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4252205686060852516
+--- !u!114 &3329800266806167718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,10 +300,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7997878801403712835}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e2d248544c412d8f2147f295534f69, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d585785b1d1189488195f036fd1797a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectToPlace: {fileID: 1051461971164539346, guid: 979294087999a7043810e8857c6b48df,
+  _objectToPlace: {fileID: 5671555621205191119, guid: 979294087999a7043810e8857c6b48df,
     type: 3}
 --- !u!1 &8833368797964103996
 GameObject:
@@ -368,7 +368,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 72a96a6351bcc9443a9f3b6e80f7ab43, type: 2}
+  - {fileID: 2100000, guid: 226dbe233e3af054888674988e0766c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

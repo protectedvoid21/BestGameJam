@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
 
         var direction = new Vector3(horizontalInput, 0, verticalInput).normalized;
 
-        _characterController.Move(direction * (_speed * Time.deltaTime));
+        _characterController.Move(direction * _speed * Time.deltaTime);
     }
 }
- 

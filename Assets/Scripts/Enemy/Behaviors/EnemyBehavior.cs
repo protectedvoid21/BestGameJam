@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class EnemyBehaviour
 {
-    protected Enemy _enemy;
+    protected Enemy self;
 
-    public EnemyBehaviour(Enemy enemy)
+    public EnemyBehaviour(Enemy self)
     {
-        _enemy = enemy;
+        this.self = self;
     }
 
     public abstract void Update();

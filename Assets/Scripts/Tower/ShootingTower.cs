@@ -6,38 +6,26 @@ public abstract class ShootingTower : Tower
 	public float Damage;
 	public float FireCooldown;
 
+	private EnemySelector enemySelector;
+
+	new void Awake() {
+		base.Awake();
+		enemySelector = GetComponent<EnemySelector>();
+	}
 
 	void Update() {
 		_currentFireCooldown = _currentFireCooldown - Time.deltaTime;
 		if(_currentFireCooldown > 0)
 			return;
 
-		Enemy closestEnemy = GetClosestEnemy();
+		Enemy closestEnemy = enemySelector.Enemy;
 		if(closestEnemy != null) {
 			ShootAt(closestEnemy);
 			_currentFireCooldown = FireCooldown;
 		}
 	}
  
-	Enemy GetClosestEnemy() {
-		Collider[] allObjects = Physics.OverlapSphere(transform.position, Range);
-		List<Enemy> enemies = new List<Enemy>();
-		foreach(Collider col in allObjects) {
-			if(col.gameObject.TryGetComponent<Enemy>(out var enemy))
-				enemies.Add(enemy);
-		}
-
-		Enemy closestEnemy = null;
-		float minSqrDist = float.MaxValue;
-		foreach(Enemy e in enemies) {
-			float sqrDist = Vector3.SqrMagnitude(e.transform.position - transform.position);
-			if(sqrDist < minSqrDist) {
-				closestEnemy = e;
-				minSqrDist = sqrDist; 
-			}
-		}
-		return closestEnemy;
-	}
+	
 
 	abstract protected void ShootAt(Enemy enemy);
 

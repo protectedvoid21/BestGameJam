@@ -108,7 +108,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 17.37
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3247004659171215254
@@ -153,3 +153,4 @@ MonoBehaviour:
   speed: 0
   direction: {x: 0, y: 0, z: 0}
   maxDuration: 5
+  damage: 0
