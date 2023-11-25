@@ -7,8 +7,9 @@ public class BasicTower : ShootingTower
 	public BasicBullet bulletPrefab;
 	public Transform shootingPoint;
 
-    private void Start()
+	protected override void Start()
     {
+		base.Start();
 		GetComponent<BasicTower>().Range = Range;
 	}
 

@@ -13,7 +13,12 @@ public abstract class ShootingTower : Tower
 		enemySelector = GetComponent<EnemySelector>();
 	}
 
-	void Update() {
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    void Update() {
 		_currentFireCooldown = _currentFireCooldown - Time.deltaTime;
 		if(_currentFireCooldown > 0)
 			return;

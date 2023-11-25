@@ -9,7 +9,6 @@ public abstract class Enemy : MonoBehaviour
 
     public float movementSpeed;
     public float attackCooldown;
-    public float distanceToEnemyToAttack;
     public int moneyGain;
 
 	[HideInInspector]
@@ -19,10 +18,14 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector]
     float _currentSpeed;
 
+    Collider collider;
+
     private void Awake()
     {
         Damageable = GetComponent<Damageable>();
         _currentSpeed = movementSpeed;
+
+        collider = GetComponent<Collider>();
     }
 
     private void Start()
@@ -37,17 +40,17 @@ public abstract class Enemy : MonoBehaviour
             _currentSpeed = movementSpeed;
         _remainingAttackCooldown -= Time.deltaTime;
 
-        Tower closest_tower = TowersManager.Instance.GetClosestTower(transform.position);
-        if(closest_tower == null)
+        Damageable closestDamageable = TowersManager.Instance.GetClosestFriendly(transform.position);
+        if (closestDamageable == null)
             return;
         
-        if(Vector3.Distance(transform.position, closest_tower.transform.position) <= distanceToEnemyToAttack) {
+        if(Vector3.Distance(transform.position, closestDamageable.transform.position) <= Damageable.Radius) {
             if(_remainingAttackCooldown <= 0) {
-                _remainingAttackCooldown = attackCooldown;
-                Attack(closest_tower.damageable);
+                _remainingAttackCooldown += attackCooldown;
+                Attack(closestDamageable);
             }
         } else {
-            MoveTowards(closest_tower.transform.position);
+            MoveTowards(closestDamageable.transform.position);
         }
     }
 
@@ -56,6 +59,7 @@ public abstract class Enemy : MonoBehaviour
         Vector3 newDirection = (targetPosition - transform.position).normalized;
         newDirection.SetY(0);
         transform.position += newDirection * _currentSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(newDirection.x, newDirection.z) * Mathf.Rad2Deg, 0f);
     }
 
     public abstract void Attack(Damageable currentTarget);

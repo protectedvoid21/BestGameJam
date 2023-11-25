@@ -11,11 +11,15 @@ public abstract class Tower : MonoBehaviour
     public float UpgradeCost;
     public int Level = 1;
     public int MaxLevel;
-    
-    public virtual void Awake() {
+
+    protected virtual void Awake() {
         damageable = GetComponent<Damageable>();
         damageable.OnDeath += GetDestroyed;
-        FindAnyObjectByType<TowersManager>().towers.Add(this);
+    }
+
+    protected virtual void Start()
+    {
+        TowersManager.Instance.towers.Add(this);
     }
 
     public void GetDestroyed()
@@ -24,7 +28,7 @@ public abstract class Tower : MonoBehaviour
     }
 
     public virtual void OnDestroy() {
-        FindAnyObjectByType<TowersManager>()?.towers.Remove(this);
+        TowersManager.Instance.towers.Remove(this);
     }
 }
  

@@ -6,8 +6,10 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     public float Health { get => _health; private set => _health = value; }
+    public float MaxHealth { get => _maxHealth; private set => _maxHealth = value; }
     [SerializeField]
     float _health;
+    float _maxHealth;
 
     bool _dead = false;
     public UnityAction OnDeath;
@@ -16,6 +18,19 @@ public class Damageable : MonoBehaviour
     public bool IsEnemy { get; private set; }
 
     public bool IsDead { get => _dead; }
+
+    [field: SerializeField]
+    public float Radius { get; private set; }
+
+    private void Start()
+    {
+        if (Radius < 0.01f)
+        {
+            Debug.Log("Did you set the Damageable radius? " + name);
+        }
+
+        _maxHealth = _health;
+    }
 
     public bool GetDamaged(float damage)
     {
