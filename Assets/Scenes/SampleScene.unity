@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672570112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5244edd16d24b6d428b201bb71880f36, type: 3}
+  m_Script: {fileID: 11500000, guid: 2240e22530176074d9317d65df933fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1904533462
@@ -1400,7 +1400,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1904533468}
-        m_TargetAssemblyTypeName: TowerBuyPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TowerBuyButton, Assembly-CSharp
         m_MethodName: TurnOnPlacingTower
         m_Mode: 1
         m_Arguments:
@@ -1458,12 +1458,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1904533462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e30b294f1876d40a05581b8e1bed6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4559185d3da641cfb4e6d148151a2cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _towerPlaceObject: {fileID: 3329800266806167718, guid: 81d4454bddedd7046858e711046081c3,
     type: 3}
-  _towerCost: 10
+  _towerCost: 15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
