@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class TowerBuyPanel : MonoBehaviour
 {
+    private bool _currentlyPlacing;
+    
     [SerializeField]
-    private GameObject _towerGameObject;
+    private PlaceObject _towerPlaceObject;
+    private PlaceObject _towerPlaceObjectInstance;
 
     [SerializeField]
     private int _towerCost;
@@ -19,12 +22,41 @@ public class TowerBuyPanel : MonoBehaviour
 
     public void TurnOnPlacingTower()
     {
-        _towerGameObject.SetActive(true);
-        _moveToAim.SetObjectOnCursor(_towerGameObject.transform);
+        _currentlyPlacing = true;
+        _towerPlaceObjectInstance = Instantiate(_towerPlaceObject);
+        _moveToAim.SetObjectOnCursor(_towerPlaceObjectInstance.transform);
+    }
+    
+    private void TurnOffPlacingTower()
+    {
+        _currentlyPlacing = false;
+        _moveToAim.SetObjectOnCursor(null);
+        Destroy(_towerPlaceObjectInstance.gameObject);
+    }
+
+    private void Update()
+    {
+        if (!_currentlyPlacing)
+        {
+            return;
+        }
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Buy();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            TurnOffPlacingTower();
+        }
     }
     
     private void Buy()
     {
         _playerMoney.TrySpendMoney(_towerCost);
+        _towerPlaceObjectInstance.Place();
+        Destroy(_towerPlaceObjectInstance.gameObject);
+        
+        TurnOffPlacingTower();
     }
 }
