@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,8 +15,10 @@ public class TowerBuyButton : MonoBehaviour
 
     [SerializeField]
     private int _towerCost;
+    [SerializeField]
+    private TextMeshProUGUI _costText;
 
-    private bool CanPlace => _playerMoney.CanSpendMoney(_towerCost);
+    private bool CanPlayerAfford => _playerMoney.CanSpendMoney(_towerCost);
     
     private PlayerMoney _playerMoney;
     private ObjectToCursorFollower _objectToCursorFollower;
@@ -25,6 +28,7 @@ public class TowerBuyButton : MonoBehaviour
         _button = GetComponent<Button>();
         _playerMoney = FindFirstObjectByType<PlayerMoney>();
         _objectToCursorFollower = FindFirstObjectByType<ObjectToCursorFollower>();
+        _costText.text = "$" + _towerCost;
     }
 
     public void TurnOnPlacingTower()
@@ -43,7 +47,7 @@ public class TowerBuyButton : MonoBehaviour
 
     private void Update()
     {
-        if (!CanPlace)
+        if (!CanPlayerAfford)
         {
             _button.interactable = false;
             return;
@@ -68,10 +72,14 @@ public class TowerBuyButton : MonoBehaviour
     private void Buy()
     {
         TurnOffPlacingTower();
-        if (!_playerMoney.TrySpendMoney(_towerCost))
+        if (!CanPlayerAfford)
         {
             return;
         }
-        _towerPlaceObjectInstance.Place();
+        var isPlaceSucceed = _towerPlaceObjectInstance.Place();
+        if (isPlaceSucceed)
+        {
+            _playerMoney.TrySpendMoney(_towerCost);
+        }
     }
 }
