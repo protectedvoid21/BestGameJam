@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,8 @@ public class TowerBuyButton : MonoBehaviour
 
     [SerializeField]
     private int _towerCost;
+    [SerializeField]
+    private TextMeshProUGUI _costText;
 
     private bool CanPlace => _playerMoney.CanSpendMoney(_towerCost);
     
@@ -25,6 +28,7 @@ public class TowerBuyButton : MonoBehaviour
         _button = GetComponent<Button>();
         _playerMoney = FindFirstObjectByType<PlayerMoney>();
         _objectToCursorFollower = FindFirstObjectByType<ObjectToCursorFollower>();
+        _costText.text = "$" + _towerCost;
     }
 
     public void TurnOnPlacingTower()

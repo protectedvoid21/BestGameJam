@@ -19,7 +19,7 @@ public class PlayerMoney : MonoBehaviour
     
     private void AdjustUIMoney()
     {
-        _moneyText.text = _money.ToString();
+        _moneyText.text = "$ " + _money;
     }
     
     public void AddMoney(int amount)
