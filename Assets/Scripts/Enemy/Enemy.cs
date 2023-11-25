@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour
     public float movementSpeed;
     public float attackCooldown;
     public float distanceToEnemyToAttack;
+    public int moneyGain;
 
 	[HideInInspector]
 	private float _remainingSlowdownTime;
@@ -68,5 +69,9 @@ public abstract class Enemy : MonoBehaviour
     public void GetDestroyed()
     {
         Destroy(gameObject);
+    }
+
+    void OnDestroy() {
+        FindAnyObjectByType<PlayerMoney>()?.AddMoney(moneyGain);
     }
 }
